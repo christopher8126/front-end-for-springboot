@@ -8,7 +8,8 @@ import {
 class Modal extends Component {
   state = {
     name: "",
-    bio: ""
+    bio: "",
+    date: ""
   };
 
   onUpdateSubmit;
@@ -20,8 +21,8 @@ class Modal extends Component {
   onSubmitHandler = e => {
     e.preventDefault();
     const id = this.props.selectedFamousPerson.id;
-    const { name, bio } = this.state;
-    this.props.updateFamousPerson({ id, name, bio });
+    const { name, bio, date } = this.state;
+    this.props.updateFamousPerson({ id, name, bio, date });
   };
 
   render() {
@@ -75,6 +76,24 @@ class Modal extends Component {
                   placeholder={
                     this.props.selectedFamousPerson
                       ? this.props.selectedFamousPerson.bio
+                      : ""
+                  }
+                />
+              </div>
+              <div class="form-group">
+                <label htmlFor="dateField">
+                  Date<span className="text-muted">(mm/dd/yyyy)</span>
+                </label>
+                <input
+                  class="form-control"
+                  type="date"
+                  id="dateField"
+                  name="date"
+                  value={this.state.date}
+                  onChange={this.onChangeHandler}
+                  placeholder={
+                    this.props.selectedFamousPerson
+                      ? this.props.selectedFamousPerson.date
                       : ""
                   }
                 />

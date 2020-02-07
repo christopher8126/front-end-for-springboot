@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import { addFamousPerson } from '../actions/famousPersonActions';
+import { addFamousPerson } from "../actions/famousPersonActions";
 
 class InputForm extends Component {
   state = {
-    name: '',
-    bio: ''
+    name: "",
+    bio: "",
+    date: ""
   };
 
   onChangeHandler = e => {
@@ -15,13 +16,13 @@ class InputForm extends Component {
 
   onSumbmitHandler = e => {
     e.preventDefault();
-    const { name, bio } = this.state;
-    const person = { name, bio };
+    const { name, bio, date } = this.state;
+    const person = { name, bio, date };
     if (!name || !bio) {
-      console.log('Empty do not submit');
+      console.log("Empty do not submit");
     } else {
       this.props.addFamousPerson(person);
-      this.setState({ name: '', bio: '' });
+      this.setState({ name: "", bio: "", date: "" });
     }
   };
 
@@ -51,10 +52,23 @@ class InputForm extends Component {
             placeholder="Enter the Bio of Famous Persons"
           />
         </div>
+        <div class="form-group">
+          <label htmlFor="dateField">
+            Date<span className="text-muted">(mm/dd/yyyy)</span>
+          </label>
+          <input
+            class="form-control"
+            type="date"
+            id="dateField"
+            name="date"
+            value={this.state.date}
+            onChange={this.onChangeHandler}
+          />
+        </div>
         <button
           type="submit"
           className="btn btn-success"
-          style={{ width: '100%' }}
+          style={{ width: "100%" }}
         >
           Submit
         </button>

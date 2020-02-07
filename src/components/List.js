@@ -33,8 +33,18 @@ class List extends Component {
               >
                 <div className="d-flex w-100 justify-content-between">
                   <div>
-                    <p className="mb-1">{fPerson.name}</p>
-                    <small className="text-muted">{fPerson.bio}</small>
+                    <p className="mb-1">
+                      <span className="text-muted">Name : </span>
+                      {fPerson.name}
+                    </p>
+                    <p className="mb-1">
+                      <span className="text-muted">Bio : </span>
+                      {fPerson.bio}
+                    </p>
+                    <p className="mb-1">
+                      <span className="text-muted">Date of Birth : </span>
+                      {fPerson.date}
+                    </p>
                   </div>
                   <div>
                     <span
